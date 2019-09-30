@@ -1,0 +1,26 @@
+{
+  "development": {
+    "proxy": {
+      "enabled": true,
+      "host": "proxy.t-systems.ru",
+      "port": 3128
+    }
+  },
+
+  "test": {
+    "proxy": {
+      "enabled": false,
+      "host": null,
+      "port": null
+    }
+  },
+  "production": {
+    "proxy": {
+      "enabled": false,
+      "host": null,
+      "port": null
+    }
+  },
+  "baseUrl": "",
+  "frontendAppName": "fe"
+}
