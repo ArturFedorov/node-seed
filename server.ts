@@ -14,7 +14,7 @@ import AppConfiguration from './configs/AppConfiguration';
 import 'express-async-errors';
 
 AppConfiguration.initConfiguration();
-logger.initDfpLogger();
+logger.initLogger();
 ServerConfig.init();
 //ServerRoutes.configureRoutes(ServerConfig.app);
 ServerDefaults.setGlobalErrorHandling(ServerConfig.app);
@@ -22,11 +22,11 @@ ServerDefaults.setHostAndPort(ServerConfig.app);
 
 // Create HTTP server.
 const server = http.createServer(ServerConfig.app);
-logger.dfpLogger.info(`Starting server on '${AppConfiguration.env}' environment.`);
+logger.appLogger.info(`Starting server on '${AppConfiguration.env}' environment.`);
 // Listen on provided port, on all network interfaces.
 server.listen(ServerDefaults.port, () => {
-  logger.dfpLogger.info(`API running on ${ServerDefaults.host}:${ServerDefaults.port}`);
-  logger.dfpLogger.info(`REST API can be reached by ${ServerDefaults.host}:${ServerDefaults.port}${ServerConstants.API_PREFIX}`);
+  logger.appLogger.info(`API running on ${ServerDefaults.host}:${ServerDefaults.port}`);
+  logger.appLogger.info(`REST API can be reached by ${ServerDefaults.host}:${ServerDefaults.port}${ServerConstants.API_PREFIX}`);
 });
 
 //Swagger.create(ServerConfig.app);

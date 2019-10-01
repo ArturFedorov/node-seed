@@ -1,4 +1,4 @@
-import {dfpLogger} from './server.logger';
+import {appLogger} from './server.logger';
 import AppConfiguration from '../configs/AppConfiguration';
 
 const ServiceRunner = {

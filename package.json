@@ -7,9 +7,7 @@
     "lint:check": "tslint -p tsconfig.json",
     "lint:autofix": "tslint --fix -p tsconfig.json",
     "server": "ts-node server.ts",
-    "server:watch": "ts-node-dev --respawn --transpileOnly server.ts",
-    "server:noproxy": "nodemon --proxyDisabled",
-    "server:wsLogging": "nodemon --enableWSLogger"
+    "server:watch": "ts-node-dev --respawn --transpileOnly server.ts"
   },
   "dependencies": {
     "express": "^4.16.0",
