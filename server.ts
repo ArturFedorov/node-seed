@@ -6,6 +6,7 @@ import ServiceRunner from './server-configs/service.runner';
 import * as logger from './server-configs/server.logger';
 import {ServerConstants} from './server-configs/server.constants';
 import AppConfiguration from './configs/AppConfiguration';
+import sequilize from './src/orm/sequilize';
 
 /*
 * This is used for handling errors. The express doesn't provide solution for handling errors
