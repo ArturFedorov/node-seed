@@ -8,13 +8,16 @@
     "lint:autofix": "tslint --fix -p tsconfig.json",
     "server": "ts-node server.ts",
     "server:watch": "ts-node-dev --respawn --transpileOnly server.ts",
-    "generate:mg": "node ./src/orm/migration.js"
+    "generate:mg": "node ./src/orm/migration.js",
+    "db:create": "sequelize db:create",
+    "db:migrate": "tsc ./src/orm/migrations/*.ts -outDir ./src/orm/migrations/js/"
   },
   "dependencies": {
     "express": "^4.16.0",
     "express-async-errors": "^3.1.1",
     "form-data": "^2.3.3",
     "log4js": "^4.1.0",
+    "pg": "^7.12.1",
     "sequelize": "^5.19.1",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.2"

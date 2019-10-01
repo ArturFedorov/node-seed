@@ -9,7 +9,7 @@ module.exports = {
   // Write migration code here.
   },
   // tslint:disable-next-line:variable-name
-  down: async (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  down: async (queryInterface: QueryInterface, Sequelize) => {
   // If migration fails, this will be called. Rollback your migration changes.
   },
 };`.trim();
