@@ -12,6 +12,7 @@ import sequelize from './src/orm/sequilize';
 * in asynchronous application
 * */
 import 'express-async-errors';
+import {Swagger} from './swagger/swagger.config';
 
 
 AppConfiguration.initConfiguration();
@@ -31,5 +32,6 @@ server.listen(ServerDefaults.port, () => {
 });
 (async () => {
   await sequelize.sync({force: true})});
-//Swagger.create(ServerConfig.app);
+
+Swagger.create(ServerConfig.app);
 ServiceRunner.run();
