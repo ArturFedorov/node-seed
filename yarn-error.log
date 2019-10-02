@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js db:migrate
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js server watch
 
 PATH: 
   /Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/arturfedorov/go/bin
@@ -24,9 +24,11 @@ npm manifest:
       "lint:autofix": "tslint --fix -p tsconfig.json",
       "server": "ts-node server.ts",
       "server:watch": "ts-node-dev --respawn --transpileOnly server.ts",
-      "generate:mg": "node ./src/orm/migration.js",
       "db:create": "sequelize db:create",
-      "db:migrate": "tsc ./src/orm/migrations/*.ts -outDir ./src/orm/migrations/js && cd js"
+      "db:migration:generate": "node ./src/orm/generator.js",
+      "db:migrate": "tsc src/orm/migrations/**.ts -outDir src/orm/migrations/js/ && sequelize db:migrate && node ./src/orm/cleanup.js",
+      "db:seeders:generate": "node ./src/orm/generator.js --seeders",
+      "db:seed": "tsc src/orm/seeders/**.ts -outDir src/orm/seeders/js/ && sequelize db:seed && node ./src/orm/cleanup.js --seeders"
     },
     "dependencies": {
       "express": "^4.16.0",
@@ -40,7 +42,7 @@ npm manifest:
     },
     "devDependencies": {
       "@types/bluebird": "^3.5.27",
-      "@types/express": "^4.16.1",
+      "@types/express": "^4.17.1",
       "@types/form-data": "^2.5.0",
       "@types/node": "^12.7.8",
       "@types/validator": "^10.11.3",
@@ -101,7 +103,7 @@ Lockfile:
       "@types/node" "*"
       "@types/range-parser" "*"
   
-  "@types/express@^4.16.1":
+  "@types/express@^4.17.1":
     version "4.17.1"
     resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.1.tgz#4cf7849ae3b47125a567dfee18bfca4254b88c5c"
     dependencies:
@@ -1783,7 +1785,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c tsc ./src/orm/migrations/*.ts -outDir ./src/orm/migrations/js && cd js
+  Arguments: -c ts-node server.ts watch
   Directory: /Users/arturfedorov/Documents/VS Code Projects/unified-be
   Output:
   

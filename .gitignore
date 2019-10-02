@@ -1,6 +1,7 @@
 /node_modules
 /dist
 /logs
+/src/orm/migrations/js
 swagger/swagger.json
 
 # Editor directories and files

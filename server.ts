@@ -6,18 +6,18 @@ import ServiceRunner from './server-configs/service.runner';
 import * as logger from './server-configs/server.logger';
 import {ServerConstants} from './server-configs/server.constants';
 import AppConfiguration from './configs/AppConfiguration';
-import sequilize from './src/orm/sequilize';
-
+import sequelize from './src/orm/sequilize';
 /*
 * This is used for handling errors. The express doesn't provide solution for handling errors
 * in asynchronous application
 * */
 import 'express-async-errors';
 
+
 AppConfiguration.initConfiguration();
 logger.initLogger();
 ServerConfig.init();
-//ServerRoutes.configureRoutes(ServerConfig.app);
+ServerRoutes.configureRoutes(ServerConfig.app);
 ServerDefaults.setGlobalErrorHandling(ServerConfig.app);
 ServerDefaults.setHostAndPort(ServerConfig.app);
 
@@ -29,6 +29,7 @@ server.listen(ServerDefaults.port, () => {
   logger.appLogger.info(`API running on ${ServerDefaults.host}:${ServerDefaults.port}`);
   logger.appLogger.info(`REST API can be reached by ${ServerDefaults.host}:${ServerDefaults.port}${ServerConstants.API_PREFIX}`);
 });
-
+(async () => {
+  await sequelize.sync({force: true})});
 //Swagger.create(ServerConfig.app);
 ServiceRunner.run();

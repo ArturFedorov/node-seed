@@ -4,7 +4,7 @@ import {Tables} from '../Tables';
 module.exports = {
   // tslint:disable-next-line:variable-name
   up: async (queryInterface: QueryInterface, Sequelize) => {
-    return await queryInterface.createTable(Tables.ITEMS, {
+    return queryInterface.createTable(Tables.ITEMS, {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -26,10 +26,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   // tslint:disable-next-line:variable-name
   down: async (queryInterface: QueryInterface, Sequelize) => {
-    return await queryInterface.dropTable(Tables.ITEMS);
+    return queryInterface.dropTable(Tables.ITEMS);
   },
 };

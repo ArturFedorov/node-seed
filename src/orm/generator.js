@@ -15,7 +15,12 @@ module.exports = {
 };`.trim();
 
 
-const migrationDir = './src/orm/migrations';
+/**
+ * check if generator is for seeders or migrations
+ * @type {string | undefined}
+ */
+const isForSeeders = process.argv.find(arg => arg.startsWith('--seeders'));
+const migrationDir = `./src/orm/${isForSeeders ? 'seeders' : 'migrations'}`;
 const alphaNumericDashUnderscore = /^[a-zA-Z0-9-_]+$/;
 
 
@@ -23,8 +28,8 @@ const alphaNumericDashUnderscore = /^[a-zA-Z0-9-_]+$/;
 * Read flags check if provided
 * */
 const flags = process.argv.slice(1).join(' ');
-if(flags.indexOf('--migrationName=') < 0) {
-  console.error('Please provide migration name --migrationName=');
+if(flags.indexOf('--fileName=') < 0) {
+  console.error('Please provide migration name --fileName=');
   return;
 }
 
@@ -32,9 +37,9 @@ if(flags.indexOf('--migrationName=') < 0) {
  * Take migration name
  * Should only contain letters numbers dash underscore
  */
-const migrationName = flags.split('--migrationName=')[1];
+const migrationName = flags.split('--fileName=')[1];
 if(!migrationName && !alphaNumericDashUnderscore.test(migrationName)) {
-  console.error('Migration name should contain only numbers letters underscore or dash and cannot be empty');
+  console.error('Migration or seeder name should contain only numbers letters underscore or dash and cannot be empty');
   return;
 }
 

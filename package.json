@@ -8,9 +8,11 @@
     "lint:autofix": "tslint --fix -p tsconfig.json",
     "server": "ts-node server.ts",
     "server:watch": "ts-node-dev --respawn --transpileOnly server.ts",
-    "generate:mg": "node ./src/orm/migration.js",
     "db:create": "sequelize db:create",
-    "db:migrate": "tsc ./src/orm/migrations/*.ts -outDir ./src/orm/migrations/js/"
+    "db:migration:generate": "node ./src/orm/generator.js",
+    "db:migrate": "tsc src/orm/migrations/**.ts -outDir src/orm/migrations/js/ && sequelize db:migrate && node ./src/orm/cleanup.js",
+    "db:seeders:generate": "node ./src/orm/generator.js --seeders",
+    "db:seed": "tsc src/orm/seeders/**.ts -outDir src/orm/seeders/js/ && sequelize db:seed:all && node ./src/orm/cleanup.js --seeders"
   },
   "dependencies": {
     "express": "^4.16.0",
@@ -24,7 +26,7 @@
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
-    "@types/express": "^4.16.1",
+    "@types/express": "^4.17.1",
     "@types/form-data": "^2.5.0",
     "@types/node": "^12.7.8",
     "@types/validator": "^10.11.3",

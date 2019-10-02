@@ -1,4 +1,4 @@
-import {AllowNull, Column, CreatedAt, DataType, Default, Model, Table, UpdatedAt} from 'sequelize-typescript';
+import {AllowNull, Column, Model, Table} from 'sequelize-typescript';
 import {Tables} from '../Tables';
 
 @Table({
@@ -10,7 +10,8 @@ export class Item extends Model<Item> {
   @Column
   name: string;
 
-  @Column
-  @Default(false)
+  @Column({
+    defaultValue: false
+  })
   active: boolean;
 }
