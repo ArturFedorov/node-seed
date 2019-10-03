@@ -30,6 +30,8 @@ server.listen(ServerDefaults.port, () => {
   logger.appLogger.info(`API running on ${ServerDefaults.host}:${ServerDefaults.port}`);
   logger.appLogger.info(`REST API can be reached by ${ServerDefaults.host}:${ServerDefaults.port}${ServerConstants.API_PREFIX}`);
 });
+
+//connect to db
 (async () => {
   await sequelize.sync({force: true})});
 

@@ -6,9 +6,9 @@ import {Item} from '../../orm/models/Item';
 
 const router = express.Router();
 
-// router.get(Routes.ITEMS, (req, res) =>
-//   ItemService.getItems()
-//     .then((data: Item[]) => res.status(200).send(data))
-// );
-router.get('/items', (req, res) => ItemService.getItems().then(result => res.send(result)));
+router.get(Routes.ITEMS, (req, res) =>
+  ItemService.getItems()
+    .then((data: Item[]) => res.status(200).send(data))
+);
+
 module.exports = router;

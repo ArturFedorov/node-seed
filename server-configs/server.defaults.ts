@@ -1,6 +1,7 @@
 import {ServerConstants} from './server.constants';
 import AppConfiguration from '../configs/AppConfiguration';
 import AppError from '../shared/AppError';
+import {appLogger} from './server.logger';
 
 /**
  * Used to set up global server handlers
@@ -15,6 +16,7 @@ const ServerDefaults = {
          if (err instanceof AppError) {
            errorCode = err.errorCode;
          }
+         appLogger.error(`${err.errorCode} – ${err.message}`)
          res.status(errorCode).json({errors: [{msg: err.message ? err.message : err}]});
         });
     },
