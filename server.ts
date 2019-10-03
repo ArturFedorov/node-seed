@@ -37,3 +37,5 @@ server.listen(ServerDefaults.port, () => {
 
 Swagger.create(ServerConfig.app);
 ServiceRunner.run();
+
+export default server;
