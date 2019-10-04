@@ -13,9 +13,10 @@
     "database": "test"
   },
   "production": {
-    "dialect": "postgres",
     "username": "postgres",
-    "password": null,
-    "database": "production"
+    "password": "123",
+    "database": "dev",
+    "host": "postgres",
+    "dialect": "postgres"
   }
 }

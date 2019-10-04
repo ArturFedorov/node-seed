@@ -13,7 +13,7 @@ const AppConfiguration = {
 
   env: '',
   baseUrl: '',
-  frontendAppName:''
+  frontendAppName: ''
 };
 
 export default AppConfiguration;

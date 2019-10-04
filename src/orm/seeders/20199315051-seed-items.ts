@@ -3,8 +3,8 @@ import {Tables} from '../Tables';
 
 module.exports = {
   // tslint:disable-next-line:variable-name
-  up: async (queryInterface: QueryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(Tables.ITEMS, [
+  up: async (queryInterface: QueryInterface, Sequelize) =>
+    queryInterface.bulkInsert(Tables.ITEMS, [
       {
         name: 'Item1',
         active: true,
@@ -17,10 +17,8 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       }
-    ], {})
-  },
+    ], {}),
   // tslint:disable-next-line:variable-name
-  down: async (queryInterface: QueryInterface, Sequelize) => {
-      return queryInterface.bulkDelete(Tables.ITEMS, {})
-  },
+  down: async (queryInterface: QueryInterface, Sequelize) =>
+      queryInterface.bulkDelete(Tables.ITEMS, {}),
 };

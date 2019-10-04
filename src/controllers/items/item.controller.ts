@@ -3,7 +3,6 @@ import {Routes} from '../../api-routes/routes';
 import {ItemService} from './item.service';
 import {Item} from '../../orm/models/Item';
 
-
 const router = express.Router();
 
 router.get(Routes.ITEMS, (req, res) =>

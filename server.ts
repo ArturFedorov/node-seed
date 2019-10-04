@@ -14,7 +14,6 @@ import sequelize from './src/orm/sequilize';
 import 'express-async-errors';
 import {Swagger} from './swagger/swagger.config';
 
-
 AppConfiguration.initConfiguration();
 logger.initLogger();
 ServerConfig.init();
@@ -31,9 +30,9 @@ server.listen(ServerDefaults.port, () => {
   logger.appLogger.info(`REST API can be reached by ${ServerDefaults.host}:${ServerDefaults.port}${ServerConstants.API_PREFIX}`);
 });
 
-//connect to db
-(async () => {
-  await sequelize.sync({force: true})});
+// connect to db
+sequelize.sync({force: false})
+  .then(logger.appLogger.info('DB Connection esteblished'));
 
 Swagger.create(ServerConfig.app);
 ServiceRunner.run();

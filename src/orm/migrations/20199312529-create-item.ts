@@ -3,8 +3,8 @@ import {Tables} from '../Tables';
 
 module.exports = {
   // tslint:disable-next-line:variable-name
-  up: async (queryInterface: QueryInterface, Sequelize) => {
-    return queryInterface.createTable(Tables.ITEMS, {
+  up: async (queryInterface: QueryInterface, Sequelize) =>
+    queryInterface.createTable(Tables.ITEMS, {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       active: {
-        defaultValue:false,
+        defaultValue: false,
         type: Sequelize.BOOLEAN
       },
       createdAt: {
@@ -26,10 +26,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    })
-  },
+    }),
   // tslint:disable-next-line:variable-name
-  down: async (queryInterface: QueryInterface, Sequelize) => {
-    return queryInterface.dropTable(Tables.ITEMS);
-  },
+  down: async (queryInterface: QueryInterface, Sequelize) =>
+    queryInterface.dropTable(Tables.ITEMS),
 };

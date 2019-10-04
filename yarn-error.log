@@ -20,8 +20,8 @@ npm manifest:
     "scripts": {
       "compile": "tsc",
       "build": "yarn compile",
-      "lint:check": "tslint -p tsconfig.json",
-      "lint:autofix": "tslint --fix -p tsconfig.json",
+      "lint": "tslint -p tsconfig.json",
+      "lint:fix": "tslint --fix -p tsconfig.json",
       "test": "mocha -r ts-node/register ./src/controllers/**/*.test.ts",
       "server": "ts-node server.ts",
       "server:watch": "ts-node-dev --respawn --transpileOnly server.ts",

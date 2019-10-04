@@ -16,7 +16,7 @@ const ServerDefaults = {
          if (err instanceof AppError) {
            errorCode = err.errorCode;
          }
-         appLogger.error(`${err.errorCode} – ${err.message}`)
+         appLogger.error(`${err.errorCode} – ${err.message}`);
          res.status(errorCode).json({errors: [{msg: err.message ? err.message : err}]});
         });
     },
